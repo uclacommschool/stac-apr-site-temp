@@ -1,0 +1,50 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: ""
+  favicon: "images/logo/STAC-Logo-Vertical.png"
+  navbar:
+    logo: "images/logo/STAC-Logo-Horizontal-White.png"
+    left:
+      - text: "Capacity Building Strategies"
+        menu:
+         - href: CBS/Schools - Capacity Building Strategies.qmd
+           text: "Site"
+         - href: CBS/cbs-lea.qmd
+           text: "LEA"
+           
+      - href: Engaging Educational Partners.qmd
+        text: "Engaging Educational Partners"      
+      - href: WCFSI.qmd
+        text: "Whole-Child & Family Supports"
+      - href: Goals and Actions.qmd
+        text: "Goals & Actions"
+      - text: "Reflections"
+        menu:
+         - href: reflections/school-reflections.qmd
+           text: "Site"
+         - href: reflections/lea-reflections.qmd
+           text: "LEA"
+      - href: system-level-analysis.qmd
+        text: "System Supports & Coordination"
+
+  sidebar:
+    - id: home-resources
+      contents:
+        - text: ""
+          href: ""
+
+          
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: false
+
+editor: visual
+

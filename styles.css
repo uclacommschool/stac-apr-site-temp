@@ -1,0 +1,222 @@
+/* css styles */
+
+/* Optional: load Montserrat (STAC font option) for supporting UI text if desired */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
+
+/* ------------------------------------------------------------
+   STAC / UCLA Color System (from your palette)
+   Prefer S-TAC brand colors (#097691, #5CBC5A, #1D6EA5, #005DAA)
+   ------------------------------------------------------------ */
+:root {
+  /* S-TAC Brand Colors (use often) */
+  --stac-teal:  #097691;
+  --stac-dark-teal: #27475C;
+  --stac-green: #5CBC5A;
+  --stac-blue-1:#1D6EA5;
+  --stac-blue-2:#005DAA;   /* best “primary” candidate */
+
+  /* UCLA secondary palette */
+  --ucla-blue:  #2774AE;
+  --ucla-gold:  #FFD100;
+
+  /* UCLA blues (for hovers/contrast) */
+  --ucla-darkest-blue:#003B5C;
+  --ucla-darker-blue: #005587;
+  --ucla-lighter-blue: #8BB8E8;
+  --ucla-lightest-blue:#DAEBFE;
+
+  /* Gold variants */
+  --ucla-darkest-gold:#FFBB1C;
+  --ucla-darker-gold: #FFC72C;
+
+  /* Additional palette (optional) */
+  --stac-fig-green:#73B662;
+  --stac-gold-2:   #F4C210;
+  --stac-cyan:     #0DB0D8;
+  --stac-cyan-lite:#87E1F8;
+  --stac-cyan-bg:  #E7F9FE;
+  --neutral-700:   #7F7F7F;
+
+  /* Do not use unless necessary: #913D88 */
+}
+
+/* ------------------------------------------------------------
+   Typography (per guide convention)
+   Titles: Arial
+   Subtitles + Main: Avenir (with fallbacks)
+   ------------------------------------------------------------ */
+body {
+  font-family: "Montserrat", Avenir, "Avenir Next", "Gill Sans", system-ui, -apple-system,
+               "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Titles / headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", Arial, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #343a40;
+}
+
+/* UI chrome */
+.navbar,
+.sidebar,
+.toc {
+  font-family: "Montserrat", Avenir, "Avenir Next", "Gill Sans", Arial, sans-serif;
+}
+
+/* Hide Quarto page title block entirely */
+.quarto-title-block {
+  display: none;
+}
+
+li::marker {
+  color: #343a40;
+}
+/* ------------------------------------------------------------
+   Navbar (switch to STAC primary blue)
+   ------------------------------------------------------------ */
+.navbar {
+  background-color: var(--stac-dark-teal) !important;
+}
+
+/* Navbar font size (top-level items) */
+.navbar .navbar-nav > .nav-item > .nav-link {
+  font-size: 0.9rem;
+}
+
+/* Navbar links */
+.navbar a,
+.navbar-brand {
+  color: white !important;
+}
+
+.navbar a:hover {
+  /* Use UCLA gold as the high-contrast accent */
+  color: var(--stac-green) !important;
+}
+
+
+/* Navbar dropdown menu (base) */
+.navbar .dropdown-menu {
+  background-color: var(--stac-teal) !important;
+}
+
+/* Dropdown items */
+.navbar .dropdown-menu .dropdown-item {
+  font-size: 0.85rem;
+}
+
+/* Dropdown item text (default state) */
+.navbar .dropdown-menu .dropdown-item {
+  color: white !important;
+}
+
+/* Hover state: dark teal background + green text */
+.navbar .dropdown-menu .dropdown-item:hover,
+.navbar .dropdown-menu .dropdown-item:focus {
+  background-color: var(--stac-dark-teal) !important;
+  color: var(--stac-green) !important;
+}
+
+/* Nav bar toggler */
+/* Navbar hamburger (mobile menu) icon */
+.navbar-toggler {
+  border-color: white !important;
+}
+
+/* Hamburger icon lines */
+.navbar-toggler-icon {
+  filter: brightness(0) invert(1);
+}
+
+/* ------------------------------------------------------------
+   Sidebar styling (light STAC background + STAC active state)
+   ------------------------------------------------------------ */
+.sidebar {
+  background-color: #ffffff !important;
+  color: #343a40;
+}
+
+.sidebar a.active {
+  color: var(--stac-blue-2);
+  font-weight: 600;
+}
+
+.sidebar a.active {
+  color: var(--stac-blue-2);
+  font-weight: 600;
+}
+
+/* Optional: non-active sidebar link hover */
+.sidebar a:hover {
+  color: var(--stac-teal);
+}
+
+
+/* ------------------------------------------------------------
+   Search styling in navbar
+   ------------------------------------------------------------ */
+
+/* Search icon in navbar */
+.navbar .aa-SearchIcon,
+.navbar .aa-SubmitIcon {
+  color: white !important;
+  fill: white !important;
+}
+
+/* Search input box */
+.navbar .aa-Input {
+  background-color: white;
+  color: var(--stac-blue-2);
+  border: 1px solid white;
+}
+
+/* Placeholder text */
+.navbar .aa-Input::placeholder {
+  color: var(--stac-blue-2);
+  opacity: 0.7;
+}
+
+/* Search button */
+.navbar .aa-SubmitButton {
+  background-color: var(--stac-blue-1);
+  border: 1px solid white;
+}
+
+/* Hover / focus */
+.navbar .aa-SubmitButton:hover,
+.navbar .aa-SubmitButton:focus-within {
+  background-color: var(--ucla-darkest-blue);
+}
+
+/* Search modal results header / detached button */
+.aa-DetachedSearchButton {
+  border-color: white;
+}
+
+
+/* ------------------------------------------------------------
+   Details in sidebar
+   ------------------------------------------------------------ */
+
+details {
+  color: #343a40; 
+}
+
+details summary {
+  color: #343a40; 
+}
+
+
+/* ------------------------------------------------------------
+   Hero Banner
+   ------------------------------------------------------------ */
+   
+/* Blue hero banner section */
+.hero-banner {
+  background-color: var(--ucla-lightest-blue);
+}
+
+/* Remove separator line inside hero banner */
+.hero-banner h2 {
+  border-bottom: none !important;
+}
