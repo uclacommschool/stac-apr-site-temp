@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capacity Based Strategies: LEA-Level</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/logo/STAC-Logo-Vertical.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-46f66b053e56abd73bb6e954d61a315b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-a0f9fd0d421825b736dc1bbcbcba2219.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/logo/STAC-Logo-Horizontal-White.png" alt="" class="navbar-logo light-content">
+    <img src="../images/logo/STAC-Logo-Horizontal-White.png" alt="" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-capacity-building-strategies" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Capacity Building Strategies</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-capacity-building-strategies">    
+        <li>
+    <a class="dropdown-item" href="../CBS/Schools - Capacity Building Strategies.html">
+ <span class="dropdown-text">Site</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../CBS/cbs-lea.html">
+ <span class="dropdown-text">LEA</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../Engaging Educational Partners.html"> 
+<span class="menu-text">Engaging Educational Partners</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../WCFSI.html"> 
+<span class="menu-text">Whole-Child &amp; Family Supports</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Goals and Actions.html"> 
+<span class="menu-text">Goals &amp; Actions</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reflections" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reflections</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reflections">    
+        <li>
+    <a class="dropdown-item" href="../reflections/school-reflections.html">
+ <span class="dropdown-text">Site</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reflections/lea-reflections.html">
+ <span class="dropdown-text">LEA</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../system-level-analysis.html"> 
+<span class="menu-text">System Supports &amp; Coordination</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<style>
+/* Mobile: don't sticky (prevents overlap) */
+@media (max-width: 991.98px) {
+  .column-margin { 
+    position: static !important; 
+    top: auto !important;
+  }
+}
+
+/* Desktop: sticky */
+@media (min-width: 992px) {
+  .column-margin {
+    position: sticky;
+    top: 1rem;
+  }
+}
+</style>
+<section id="are-lea-level-ccspp-grantees-building-their-capacity-to-implement-the-approach" class="level1 hero-banner">
+<h1>Are LEA-Level CCSPP grantees building their capacity to implement the approach?</h1>
+<section id="overview-of-capacity-building-strategies-lea-level-in-year-3" class="level2">
+<h2 class="anchored" data-anchor-id="overview-of-capacity-building-strategies-lea-level-in-year-3">Overview of <em>Capacity Building Strategies, LEA-level</em> in Year 3</h2>
+</section>
+</section>
+
+<div class="no-row-height column-margin column-container"><section id="resources" class="level3">
+<h3 class="anchored" data-anchor-id="resources">Resources</h3>
+<p><span style="color: #343a40;"><strong>Capacity Building Strategies (CBS): A Developmental Rubric</strong></span></p>
+<details>
+<summary>
+Rubrics
+</summary>
+<ul>
+<li><a href="https://drive.google.com/file/d/1DP7RyhAVxTFmHMCD0gwekij5-J-h7BR9/view" target="_blank">CBS - English</a></li>
+</ul>
+</details>
+<p><span style="color: #343a40;"><strong>Capacity-Building Strategies: Self-Assessments</strong></span></p>
+<details>
+<summary>
+Self-Assessments
+</summary>
+<ul>
+<li><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdcH3LNxkDwyvIk_gppRtpNWwfiOEIjXn0z5QTgOqBknGu_lQ/viewform" target="_blank">LEA - English</a></p></li>
+<li><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSc5DZgLk-vQy-woKBKLm49a4QzHU9YAFCF1oBO0h-w63NDepA/viewform?usp=send_form" target="_blank">Site - English</a></p></li>
+<li><p><a href="https://docs.google.com/document/d/1Zg2EU0CJ4ka5Bm2RTd6Dy4XGqrpqrelE/edit?usp=sharing&amp;ouid=100302755592707449375&amp;rtpof=true&amp;sd=true" target="_blank">Site - Spanish</a></p></li>
+</ul>
+</details>
+</section></div><p>In the Year 3 APR (2024–25), LEAs across all three cohorts self-assessed their phase of growth—Visioning, Engaging, or Transforming—across the five Capacity-Building Strategies (CBSs). Overall, the distributions align with a developmental progression across cohorts: Cohort 1 is most consistently in Engaging (and shows the largest Transforming shares), Cohort 2 reflects a mix but remains predominantly in Engaging, and Cohort 3 is primarily in Visioning across all strategies, consistent with being the newest cohort.</p>
+<p>Across strategies, Cohort 1 reports strong concentrations in Engaging (e.g., Shared Commitment, Understanding, and Priorities at 77% Engaging; Sustaining Staff and Resources at 76% Engaging) and shows the highest Transforming shares, particularly in Strategic Community Partnerships (22% Transforming). Cohort 2 follows a similar pattern but with slightly more Visioning and lower Transforming. In contrast, Cohort 3 reports majority Visioning across all five strategies (ranging from 46% to 62% Visioning), indicating that many LEAs are still establishing foundational conditions for implementation; Transforming remains minimal across Cohort 3 (2%–7%).</p>
+<section id="cohorts-1-3-year-3" class="level2">
+<h2 class="anchored" data-anchor-id="cohorts-1-3-year-3">Cohorts 1-3, Year 3</h2>
+<p><img src="..\images/LEA/cbs-y3-all-cohorts-new-colors.png" class="img-fluid"></p>
+</section>
+<section id="shared-commitment-understanding-and-priorities" class="level2">
+<h2 class="anchored" data-anchor-id="shared-commitment-understanding-and-priorities">Shared Commitment, Understanding, and Priorities</h2>
+<p>Shared Commitment, Understanding, and Priorities shows one of the largest shifts from Year 2 to Year 3, with Visioning declining sharply (from 59% to 19%) and Engaging increasing to 72%, alongside modest growth in Transforming (from 4% to 7%). This pattern suggests that most LEAs have moved beyond defining priorities toward actively aligning stakeholders around shared goals, though full institutionalization remains limited. LEAs emphasized the role of advisory structures and feedback loops that distribute ownership for establishing priorities. For example, one LEA described how feedback structures supported both belonging and academic partnership: “By listening and responding to feedback, from all stakeholders through surveys, focus groups and interviews, participation in advisory councils, and providing opportunities for student voice to be amplified, our sites have become a hub of belonging and academic partnership.”</p>
+</section>
+<section id="collaborative-leadership" class="level2">
+<h2 class="anchored" data-anchor-id="collaborative-leadership">Collaborative Leadership</h2>
+<p>Collaborative Leadership shows a substantial shift from Year 2 to Year 3, with Visioning declining from 68% to 24% and Engaging increasing from 40% to 66%, alongside modest growth in Transforming (from 4% to 8%). These changes indicate that many LEAs have moved from planning collaborative structures toward more consistent, shared leadership practices, even as relatively few report fully transformed leadership systems. LEA narratives emphasized the role of cross-role leadership teams, regular meeting routines, and shared use of data to support coordinated decision-making. For example, one LEA noted that “through shared leadership teams, professional development efforts, and cross-agency collaboration, our district is building a sustainable foundation for student-centered, community-embedded support systems.”</p>
+</section>
+<section id="sustaining-staff-and-resources" class="level2">
+<h2 class="anchored" data-anchor-id="sustaining-staff-and-resources">Sustaining Staff and Resources</h2>
+<p>Sustaining Staff and Resources demonstrates a strong consolidation in the Engaging phase. Visioning declines sharply from 49% to 17%, while Engaging increases from 60% to 74%, and Transforming grows from 3% to 7%. These shifts indicate that most LEAs have moved beyond planning toward actively staffing, coordinating, and resourcing whole-child supports, though long-term sustainability remains an emerging area. LEAs frequently cited the importance of dedicated coordination roles and infrastructure investments to support implementation. As one LEA observed, “the need to pursue additional funding opportunities is critical to ensure the sustainability of key positions beyond the duration of the CCSPP grant.”</p>
+</section>
+<section id="strategic-community-partnerships" class="level2">
+<h2 class="anchored" data-anchor-id="strategic-community-partnerships">Strategic Community Partnerships</h2>
+<p>Strategic Community Partnerships stands out as the most advanced capacity-building strategy. From Year 2 to Year 3, Visioning declines from 47% to 12%, Engaging increases from 55% to 72%, and Transforming rises from 10% to 14%—the highest Transforming share across all strategies. This distribution suggests that partnerships are increasingly embedded as core mechanisms for addressing barriers to learning rather than peripheral supports. LEAs frequently highlighted partnerships that expanded access to mental health services, basic needs supports, and family resources. For example, one LEA described how it “strengthened its wraparound services by creating a dedicated counseling space and maintaining an on-site food pantry, clothing closet, and hygiene supply distribution system.”</p>
+</section>
+<section id="centering-community-based-learning" class="level2">
+<h2 class="anchored" data-anchor-id="centering-community-based-learning">Centering Community-Based Learning</h2>
+<p>Centering Community-Based Learning shows meaningful growth toward Engaging (40% to 58%) and a decrease in Visioning (63% to 37%) from Year 2 to Year 3, though it remains more Visioning-heavy than other strategies in Year 3. LEA narratives suggest that this is less about the perceived value of community-connected learning and more about implementation conditions that determine consistency and equity at scale. A recurring challenge is that these opportunities depend on consistent student participation, which is undermined when attendance is unstable and when students face barriers such as transportation or competing family obligations. One LEA summarized the linkage between attendance and access to programming: “These approaches have contributed to gradual declines in chronic absenteeism rates, which directly impacts students’ access to the full breadth of academic and enrichment programming.” LEAs also noted capacity constraints—staffing coverage, scheduling, and space—that limit how many students can be served and how reliably programs can run across the year.</p>
+</section>
+<section id="insights-by-cohort" class="level1 hero-banner">
+<h1>Insights by Cohort</h1>
+</section>
+<p>For Cohort 1 LEAs, the Year 2 to Year 3 APR data suggests continued movement from early planning into deeper implementation across most of the five capacity-building strategies, with a noticeable rise in the Engaging phase in several areas. For example, the Engaging share increases from 2023–24 to 2024–25 in Shared Commitment, Understanding, and Priorities (24% to 33%), Collaborative Leadership (18% to 31%), Sustaining Staff and Resources (26% to 32%), and Strategic Community Partnerships (23% to 30%). At the same time, Transforming remains relatively small across strategies, with the clearest presence in Strategic Community Partnerships (9% in both years) and some growth in Sustaining Staff and Resources (2% to 6%). Centering Community-Based Learning stands out as the one area where Transforming is limited and declines (7% to 2%), even as Engaging increases (19% to 27%), indicating that instructional-core shifts may still be developing more slowly than other system-building efforts.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Cohort 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Cohort 2</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p><img src="..\images/LEA/cbs-cohort-1-new-colors.png" class="img-fluid"></p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p><img src="..\images/LEA/cbs-cohort-2-new-colors.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,129 @@
+---
+title: ""
+pagetitle: "CCSPP APR"
+---
+
+```{=html}
+<style>
+/* Mobile: don't sticky (prevents overlap) */
+@media (max-width: 991.98px) {
+  .column-margin { 
+    position: static !important; 
+    top: auto !important;
+  }
+}
+
+/* Desktop: sticky */
+@media (min-width: 992px) {
+  .column-margin {
+    position: sticky;
+    top: 1rem;
+  }
+}
+</style>
+```
+
+::: hero-banner
+# California Community Schools Partnership Program Annual Progress Report
+
+## APR Data & Insights
+:::
+
+::: column-margin
+### Resources
+
+[**Previous APR Responses**]{style="color: #343a40;"}
+
+-   [Data Request Tool](https://uclaed.co1.qualtrics.com/jfe/form/SV_9mLEu1IuNi6LZfo){target="_blank"}
+
+[**Community Schools Needs and Assets Assessment (NAA) Guide**]{style="color: #343a40;"}
+
+<details>
+
+<summary>Guides</summary>
+
+-   [NAA Guide – Full](https://cadigitalcommons.org/wp-content/uploads/2025/06/Deep-Needs-and-Asset-Assessment.pdf){target="_blank"}
+
+-   [NAA Guide – Condensed](https://cadigitalcommons.org/wp-content/uploads/2025/06/Needs-and-Assets-Assessment-Condensed.pdf){target="_blank"}
+
+</details>
+
+[**Capacity Building Strategies (CBS): A Developmental Rubric**]{style="color: #343a40;"}
+
+<details>
+
+<summary>Rubrics</summary>
+
+-   [CBS - English](https://drive.google.com/file/d/1DP7RyhAVxTFmHMCD0gwekij5-J-h7BR9/view){target="_blank"}
+
+</details>
+
+[**Capacity-Building Strategies: Self-Assessments**]{style="color: #343a40;"}
+
+<details>
+
+<summary>Self-Assessments</summary>
+
+-   [LEA - English](https://docs.google.com/forms/d/e/1FAIpQLSdcH3LNxkDwyvIk_gppRtpNWwfiOEIjXn0z5QTgOqBknGu_lQ/viewform){target="_blank"}
+
+-   [Site - English](https://docs.google.com/forms/d/e/1FAIpQLSc5DZgLk-vQy-woKBKLm49a4QzHU9YAFCF1oBO0h-w63NDepA/viewform?usp=send_form){target="_blank"}
+
+-   [Site - Spanish](https://docs.google.com/document/d/1Zg2EU0CJ4ka5Bm2RTd6Dy4XGqrpqrelE/edit?usp=sharing&ouid=100302755592707449375&rtpof=true&sd=true){target="_blank"}
+
+</details>
+
+[**Whole Child & Family Supports Inventory**]{style="color: #343a40;"}
+
+-   [Inventory Form](https://cadigitalcommons.org/wp-content/uploads/2025/07/Whole-Child-and-Family-Supports-Inventory-updated.pdf){target="_blank"}
+:::
+
+**The Annual Progress Report (APR) serves as a tool to assess implementation progress and efforts, and to encourage reflection as part of an ongoing continuous improvement process.** The APR was designed to be filled out by each school's California Community Schools Partnership Program (CCSPP) shared decision-making team or council to ensure the perspectives of students, staff, families and community partners are captured. The reporting portal is intended to align with required annual update presentations on community school planning, including data and outcomes from the prior year at each school site.
+
+-   **Through the Capacity-Building Strategies, CCSPP schools are building the core organizational, relational, and leadership foundations required for community schools implementation.** In Year 3, “Strategic Community Partnerships” has the highest percentage of schools and LEAs with a self rating of being in the “Transforming” phase at 14%. Across all of the capacities, Year 3 findings for Cohort 1 show that schools are moving beyond the planning and visioning stage to true and enduring transformation. Learn more about schools’ capacities [here](https://uclacommschool.github.io/stac-apr-site/CBS/Schools%20-%20Capacity%20Building%20Strategies.html){target="_blank"} and about LEAs’ capacities [here](https://uclacommschool.github.io/stac-apr-site/CBS/cbs-lea.html){target="_blank"}.
+
+-   **CCSPP schools are experiencing steady increases in engagement across groups — especially families and community partners — signaling stronger relational infrastructure.** Research tells us that these relationships are not peripheral; they are central to sustained implementation, equitable decision-making, and long-term success. Learn more [here](https://uclacommschool.github.io/stac-apr-site/Engaging%20Educational%20Partners.html){target="_blank"}.
+
+-   **CCSPP schools are implementing a wide variety of whole child and family supports.** Year 3 findings for Cohort 1 demonstrate a clear progression toward more comprehensive, integrated whole child implementation. Learn more [here](https://uclacommschool.github.io/stac-apr-site/WCFSI.html){target="_blank"}.
+
+-   **CCSPP schools are identifying the measures that matter most to their communities and using them to guide continuous improvement.** Almost one-third of grantees in Year 3 indicate that they are using locally developed metrics to track progress in their school specific goals. Learn more [here](https://uclacommschool.github.io/stac-apr-site/Goals%20and%20Actions.html){target="_blank"}.
+
+-   **Most CCSPP districts and consortiums are developing systems to support school capacity to access, understand, and use data for continuous program improvement and pursuing policy initiatives that align with and reinforce the shared vision for community schooling.** Findings also show strong external coordination, particularly for newer cohorts. Learn more [here](https://uclacommschool.github.io/stac-apr-site/system-level-analysis.html){target="_blank"}.
+
+The APR is aligned with the California Community Schools Framework and also aligns with resources provided by the State Transformational Assistance Center (S-TAC) listed in the side bar.
+
+The visualizations and tables throughout this site reflect the data from the CCSPP APR for school sites for **Year 1 (2022-2023), Year 2 (2023- 2024), and Year 3 (2024-2025) school years.**
+
+<details>
+
+<summary>Site & LEA Counts</summary>
+
+::: panel-tabset
+#### Site Count
+
+| Cohort          | Site Count |
+|-----------------|------------|
+| Cohort 1        | 457        |
+| Cohort 2        | 571        |
+| Cohort 3        | 998        |
+| Cohort 4        | 469        |
+| **Grand Total** | **2,495**  |
+
+#### LEA Count
+
+| Cohort          | LEA Count |
+|-----------------|-----------|
+| Cohort 1        | 75        |
+| Cohort 2        | 104       |
+| Cohort 3        | 251       |
+| Cohort 4        | 97        |
+| **Grand Total** | **527**   |
+
+\*Number of participating LEAs (unique). The number of granted LEA per cohort might vary, since some LEAs were awarded grants in more than one cohort.
+:::
+
+</details>
+
+|                                                          |
+|:--------------------------------------------------------:|
+| ![](images/UCLACtrForCommSchoolingLogo.png){width="398"} |
+|          ![](images/stac-logo.png){width="188"}          |
