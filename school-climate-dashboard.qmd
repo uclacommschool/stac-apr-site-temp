@@ -1,0 +1,412 @@
+---
+title: "School Climate & Capacity-Building Strategies Dashboard"
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: false
+---
+
+```{=html}
+<style>
+/* Bigger, black legend text for every Observable Plot chart on this page.
+   Plot renders its color-swatch legend as a separate HTML block (not SVG)
+   with a hardcoded 10px font, so it needs its own override here -- the
+   axis/tick/title font size and color are set per-chart instead, via each
+   Plot.plot()'s `style` option below. */
+[class*="-swatches"] {
+  font-size: 15px !important;
+  color: black !important;
+}
+</style>
+<!--
+This page is meant to live in the stac-apr-site repo, next to the other
+.qmd pages (e.g. alongside CBS/cbs-lea.qmd), so it inherits the site's
+brand.yml / styles.css automatically.
+
+DATA: this page no longer reads pre-exported CSVs. The {r} chunk right below
+sources 00-prepare-climate-data.R -- which pulls the raw Qualtrics export
+from Box and cleans it -- and hands the resulting data frames to Observable
+JS via ojs_define(). That means:
+  - 00-prepare-climate-data.R must sit next to this .qmd (or update the
+    source() path below).
+  - Whoever runs `quarto render` / `quarto preview` needs R installed, with
+    the tidyverse/janitor/readxl packages, and needs Box Drive synced (same
+    as running any of the numbered analysis scripts).
+  - There's no manual export/copy step anymore -- the page always renders
+    from a fresh pull of the data.
+  - The published static HTML is unaffected: the data gets baked into the
+    page at render time, so site visitors still get a fully static page
+    with no server and no R dependency on their end.
+
+If you'd rather work from flat CSVs (e.g. for Tableau/Excel), you can still
+run 05-export-for-dashboard.R separately -- it sources the same prep script
+and writes the two CSVs out, but this page doesn't need them.
+
+All filtering, aggregation, and chart rendering below runs client-side via
+Observable JS (OJS) -- no server needed, so this works as static content on
+GitHub Pages just like the rest of the site. The percentage/count logic in
+the OJS cells below was verified in Node against the real exported data
+before this file was written; the layout/rendering itself should still get
+a `quarto preview` check on your end.
+-->
+```
+
+Select a Cohort, Region, and/or LEA below to filter every chart on this page. Hover any bar for details.
+
+```{r}
+#| echo: false
+#| message: false
+
+source("00-prepare-climate-data.R")
+
+ojs_define(
+  climate_data_bridge = school_climate_long,
+  phase_defs_bridge    = phase_definitions
+)
+```
+
+```{ojs}
+//| echo: false
+data = transpose(climate_data_bridge)
+```
+
+```{ojs}
+//| echo: false
+definitions = transpose(phase_defs_bridge)
+```
+
+```{ojs}
+//| echo: false
+cohortOptions = [...new Set(data.map(d => d.cohort))].sort()
+```
+
+```{ojs}
+//| echo: false
+regionOptions = [...new Set(data.map(d => d.region))].sort()
+```
+
+```{ojs}
+//| echo: false
+leaOptions = [...new Set(data.map(d => d.lea))].sort()
+```
+
+```{ojs}
+//| echo: false
+strategyKeys = [...new Set(data.map(d => d.strategy))]
+```
+
+::: {layout-ncol="4"}
+```{ojs}
+//| echo: false
+viewof cohortFilter = Inputs.select(["All", ...cohortOptions], {label: "CCSPP Cohort:"})
+```
+
+```{ojs}
+//| echo: false
+viewof regionFilter = Inputs.select(["All", ...regionOptions], {label: "Region:"})
+```
+
+```{ojs}
+//| echo: false
+viewof leaFilter = Inputs.select(["All", ...leaOptions], {label: "Local Educational Agency:"})
+```
+
+```{ojs}
+//| echo: false
+html`<div style="border:1px solid #ddd; border-radius:6px; padding:8px 14px; text-align:center;">
+  <div style="font-size:0.8rem; color:#27475C; font-weight:bold;">Total Schools</div>
+  <div style="font-size:1.8rem; font-weight:bold; color:#005DAA;">${filteredSchools.length}</div>
+</div>`
+```
+:::
+
+```{ojs}
+//| echo: false
+filteredLong = data.filter(d =>
+  (cohortFilter === "All" || d.cohort === cohortFilter) &&
+  (regionFilter === "All" || d.region === regionFilter) &&
+  (leaFilter === "All" || d.lea === leaFilter)
+)
+```
+
+```{ojs}
+//| echo: false
+// climate fields repeat identically across a school's 5 strategy-rows, so
+// dedupe back to one row per school for anything that isn't strategy-specific
+filteredSchools = filteredLong.filter(d => d.strategy === strategyKeys[0])
+```
+
+## School Climate Measure
+
+### "Does your school currently collect data and track progress on school climate?"
+
+```{ojs}
+//| echo: false
+q137Agg = {
+  const rows = filteredSchools.filter(d => d.climate_tracks_data);
+  const groups = d3.rollup(rows, v => v.length, d => d.climate_tracks_data);
+  const total = d3.sum(Array.from(groups.values()));
+  return ["Yes", "No"].map(k => ({
+    category: "All Schools", key: k,
+    n: groups.get(k) ?? 0,
+    pct: total > 0 ? (groups.get(k) ?? 0) / total : 0
+  }));
+}
+```
+
+```{ojs}
+//| echo: false
+// Two-point scale: first 2 colors from the shared blue scale (darkest -> lightest)
+q137Color = ({ Yes: "#346FAB", No: "#AACCE9" })
+```
+
+```{ojs}
+//| echo: false
+Plot.plot({
+  marginLeft: 120,
+  marginBottom: 50,
+  width: width,
+  height: 150,
+  style: { fontSize: "15px", color: "black" },
+  x: { percent: true, label: "% of Respondents", labelAnchor: "center" },
+  y: { label: null },
+  color: { domain: ["Yes", "No"], range: ["Yes", "No"].map(k => q137Color[k]), legend: true },
+  marks: [
+    Plot.barX(q137Agg, Plot.stackX({
+      x: "pct", y: "category", fill: "key",
+      title: d => `Tracks school climate data: ${d.key}\n% of Respondents: ${(d.pct * 100).toFixed(0)}%\nn = ${d.n}`
+    })),
+    Plot.text(q137Agg, Plot.stackX({
+      x: "pct", y: "category",
+      text: d => d.pct >= 0.04 ? `${(d.pct * 100).toFixed(0)}%` : "",
+      fill: "white", fontWeight: "bold"
+    })),
+    Plot.ruleX([0])
+  ]
+})
+```
+
+### "Our school climate has improved since we started implementing the CCSPP"
+
+```{ojs}
+//| echo: false
+viewof climateFormat = Inputs.radio(
+  ["5-point scale", "Agree / Neutral / Disagree"],
+  { value: "Agree / Neutral / Disagree", label: "View:" }
+)
+```
+
+```{ojs}
+//| echo: false
+q171Order = climateFormat === "5-point scale"
+  ? ["Strongly disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Strongly agree"]
+  : ["Disagree", "Neutral", "Agree"]
+```
+
+```{ojs}
+//| echo: false
+q171Key = climateFormat === "5-point scale" ? "climate_improved" : "climate_agree3"
+```
+
+```{ojs}
+//| echo: false
+// Shared blue (-> orange) scale, darkest/bluest = most positive:
+//   75-100% #1F4E79   50-74% #2E75B6   25-49% #9DC3E6   1-24% #F4B183   0% #C55A11
+// 5-point scale uses all 5, in order from most to least agreement.
+// 3-point scale uses just the 3 blues, in the same progressive order.
+q171Color = climateFormat === "5-point scale"
+  ? ({
+      "Strongly disagree": "#C55A11",
+      "Somewhat disagree": "#F4B183",
+      "Neither agree nor disagree": "#9DC3E6",
+      "Somewhat agree": "#2E75B6",
+      "Strongly agree": "#1F4E79"
+    })
+  : ({ "Disagree": "#AACCE9", "Neutral": "#6EA1CE", "Agree": "#346FAB" })
+```
+
+```{ojs}
+//| echo: false
+q171Agg = {
+  const rows = filteredSchools.filter(d => d[q171Key]);
+  const groups = d3.rollup(rows, v => v.length, d => d[q171Key]);
+  const total = d3.sum(Array.from(groups.values()));
+  return q171Order.map(k => ({
+    category: "All Schools", key: k,
+    n: groups.get(k) ?? 0,
+    pct: total > 0 ? (groups.get(k) ?? 0) / total : 0
+  }));
+}
+```
+
+```{ojs}
+//| echo: false
+Plot.plot({
+  marginLeft: 120,
+  marginBottom: 50,
+  width: width,
+  height: 150,
+  style: { fontSize: "15px", color: "black" },
+  x: { percent: true, label: "% of Respondents", labelAnchor: "center" },
+  y: { label: null },
+  color: { domain: q171Order, range: q171Order.map(k => q171Color[k]), legend: true },
+  marks: [
+    Plot.barX(q171Agg, Plot.stackX({
+      x: "pct", y: "category", fill: "key",
+      title: d => `Our school climate has improved: ${d.key}\n% of Respondents: ${(d.pct * 100).toFixed(0)}%\nn = ${d.n}`
+    })),
+    Plot.text(q171Agg, Plot.stackX({
+      x: "pct", y: "category",
+      text: d => d.pct >= 0.04 ? `${(d.pct * 100).toFixed(0)}%` : "",
+      fill: "white", fontWeight: "bold"
+    })),
+    Plot.ruleX([0])
+  ]
+})
+```
+
+## Capacity-Building Strategies: Phase of Growth vs. School Climate
+
+Pick a strategy below to see how a school's phase of growth on that particular strategy relates to the two school climate measures above.
+
+::: {.callout-note appearance="minimal"}
+Rows: Visioning / Engaging / Transforming / Null (no response)
+:::
+
+```{ojs}
+//| echo: false
+phaseOrder = ["Visioning", "Engaging", "Transforming", "Null"]
+```
+
+```{ojs}
+//| echo: false
+viewof cbsStrategyFilter = Inputs.select(strategyKeys, { label: "CBS Strategy:", value: strategyKeys[0] })
+```
+
+```{ojs}
+//| echo: false
+cbsScopedLong = filteredLong.filter(d => d.strategy === cbsStrategyFilter)
+```
+
+### "Does your school currently collect data and track progress on school climate?"
+
+```{ojs}
+//| echo: false
+// Same 2-blue scale used for the Yes/No chart above, kept as its own copy
+// here so this section doesn't depend on a cell defined earlier in the page.
+cbsTrackColor = ({ Yes: "#346FAB", No: "#AACCE9" })
+```
+
+```{ojs}
+//| echo: false
+cbsTrackAgg = {
+  const rows = cbsScopedLong.filter(d => d.climate_tracks_data);
+  const groups = d3.rollup(rows, v => v.length, d => d.phase, d => d.climate_tracks_data);
+  const result = [];
+  for (const phase of phaseOrder) {
+    const respMap = groups.get(phase) ?? new Map();
+    const total = d3.sum(Array.from(respMap.values()));
+    for (const response of ["Yes", "No"]) {
+      const n = respMap.get(response) ?? 0;
+      const pct = total > 0 ? n / total : 0;
+      result.push({ phase, response, n, total, pct });
+    }
+  }
+  return result;
+}
+```
+
+```{ojs}
+//| echo: false
+Plot.plot({
+  marginLeft: 120,
+  marginBottom: 50,
+  width: width,
+  height: 260,
+  style: { fontSize: "15px", color: "black" },
+  x: { percent: true, label: "% of Respondents", labelAnchor: "center" },
+  y: { label: null, domain: phaseOrder },
+  color: { domain: ["Yes", "No"], range: ["Yes", "No"].map(k => cbsTrackColor[k]), legend: true },
+  marks: [
+    Plot.barX(cbsTrackAgg, Plot.stackX({
+      x: "pct", y: "phase", fill: "response",
+      title: d => `${cbsStrategyFilter}\n` +
+                   `Phase of Growth and Development: ${d.phase}\n` +
+                   `Tracks school climate data: ${d.response}\n` +
+                   `% of Respondents: ${(d.pct * 100).toFixed(0)}%\nn = ${d.n}`
+    })),
+    Plot.text(cbsTrackAgg, Plot.stackX({
+      x: "pct", y: "phase",
+      text: d => d.pct >= 0.06 ? `${(d.pct * 100).toFixed(0)}%` : "",
+      fill: "white", fontWeight: "bold"
+    })),
+    Plot.ruleX([0])
+  ]
+})
+```
+
+### "Our school climate has improved since we started implementing the CCSPP"
+
+```{ojs}
+//| echo: false
+cbsResponseOrder = ["Disagree", "Neutral", "Agree"]
+```
+
+```{ojs}
+//| echo: false
+// Same 3-blue scale used for the Agree/Neutral/Disagree chart above, kept as
+// its own copy here so this section doesn't depend on a cell defined earlier
+// in the page.
+cbsClimateColor = ({ Disagree: "#AACCE9", Neutral: "#6EA1CE", Agree: "#346FAB" })
+```
+
+```{ojs}
+//| echo: false
+cbsClimateAgg = {
+  const rows = cbsScopedLong.filter(d => d.climate_agree3);
+  const groups = d3.rollup(rows, v => v.length, d => d.phase, d => d.climate_agree3);
+  const result = [];
+  for (const phase of phaseOrder) {
+    const respMap = groups.get(phase) ?? new Map();
+    const total = d3.sum(Array.from(respMap.values()));
+    for (const response of cbsResponseOrder) {
+      const n = respMap.get(response) ?? 0;
+      const pct = total > 0 ? n / total : 0;
+      result.push({ phase, response, n, total, pct });
+    }
+  }
+  return result;
+}
+```
+
+```{ojs}
+//| echo: false
+Plot.plot({
+  marginLeft: 120,
+  marginBottom: 50,
+  width: width,
+  height: 260,
+  style: { fontSize: "15px", color: "black" },
+  x: { percent: true, label: "% of Respondents", labelAnchor: "center" },
+  y: { label: null, domain: phaseOrder },
+  color: { domain: cbsResponseOrder, range: cbsResponseOrder.map(k => cbsClimateColor[k]), legend: true },
+  marks: [
+    Plot.barX(cbsClimateAgg, Plot.stackX({
+      x: "pct", y: "phase", fill: "response",
+      title: d => `${cbsStrategyFilter}\n` +
+                   `Phase of Growth and Development: ${d.phase}\n` +
+                   `Our school climate has improved: ${d.response}\n` +
+                   `% of Respondents: ${(d.pct * 100).toFixed(0)}%\nn = ${d.n}`
+    })),
+    Plot.text(cbsClimateAgg, Plot.stackX({
+      x: "pct", y: "phase",
+      text: d => d.pct >= 0.06 ? `${(d.pct * 100).toFixed(0)}%` : "",
+      fill: "white", fontWeight: "bold"
+    })),
+    Plot.ruleX([0])
+  ]
+})
+```
