@@ -115,6 +115,28 @@ a `quarto preview` check on your end.
 The APR has a few questions that ask whether grantees are collecting data on school climate and whether they see it improving under the community schools strategy. School climate covers how safe, supportive and connected a school feels to students, families and staff. It's a key sign of whether the community schools approach is changing how schools work day to day.
 
 
+**Analysis**
+
+::: {.panel-tabset}
+
+### All Schools
+Across all 2,381 CCSPP schools, collecting school climate data is nearly universal. Ninety-nine percent of schools report that they collect data and track progress on school climate, and only 28 schools say they do not. Most schools also report positive change: 80% agree that their school climate has improved since they began implementing the CCSPP. That includes 46% who somewhat agree and 34% who strongly agree. Another 13% neither agree nor disagree, and 7% disagree (5% strongly, 2% somewhat). Because more schools somewhat agree than strongly agree, many grantees seem to see real progress but not yet a full change in school climate. Looking by cohort shows a clear pattern. Strong agreement is highest in the earliest cohort and declines with each later cohort: 48% in Cohort 1, 39% in Cohort 2, 33% in Cohort 3 and 15% in Cohort 4. This suggests that perceived climate improvement grows the longer schools implement the community schools strategy.
+
+### Cohort 1
+Cohort 1 reports the strongest climate improvement of any cohort. Eighty-five percent agree, including 48% who strongly agree, and only 6% are neutral. However, Cohort 1 also has the highest share of schools that strongly disagree (8%). This suggests that most schools see clear gains, while a small group may need targeted follow-up.
+
+### Cohort 2
+Cohort 2 is also largely positive: 83% agree that climate has improved (44% somewhat, 39% strongly). However, it has the lowest data-tracking rate (98%) and the highest disagreement (10%). That points to a small group of schools that may need support with climate data systems and implementation.
+
+### Cohort 3
+Cohort 3 has the most consistently positive results. Eighty-five percent agree and only 6% disagree, the lowest of any cohort. Most schools somewhat agree (52%) rather than strongly agree (33%). This suggests broad, steady improvement that may strengthen as implementation deepens.
+
+### Cohort 4
+Cohort 4 has strong data practices (99% tracking), but only 58% agree that climate has improved. Another 36% are neutral, four to six times the rate of other cohorts. Disagreement is low (7%), which suggests that it is too early for many of these schools to see change rather than that climate is getting worse.
+
+:::
+
+
 **Instructions:** Select a CCSPP Cohort, Region, Local Educational Agency (LEA), and/or School below to filter every chart on this page. Hover over any bar for details.
 
 ```{r}
@@ -354,7 +376,32 @@ Plot.plot({
 
 ## Capacity-Building Strategies: Phase of Growth vs. School Climate
 
-Pick a strategy below to see how a school's phase of growth on that particular strategy relates to the two school climate measures above.
+
+### How does a school's phase of growth relate to school climate?
+::: {.panel-tabset}
+
+
+#### Overview
+For all five strategies, schools in every phase track school climate data at nearly the same rate (98–99%), so phase of growth does not affect whether schools collect climate data. It does relate to how schools see climate change. As schools move from Visioning to Transforming, strong agreement that climate has improved roughly doubles or more (from about 20% to about 50%), and neutral responses fall from about 25–30% to about 5%. At the same time, strong disagreement rises from about 2% to about 10%. This suggests that schools further along form clearer opinions about their climate, and that those opinions are mostly positive. Part of this pattern reflects cohort: most Cohort 4 schools are in the Visioning phase. The Null row (schools with no phase response) includes only two to eight schools per strategy and should not be interpreted.
+
+#### Centering Community-Based Learning
+Strong agreement rises steadily by phase, from 21% for Visioning to 40% for Engaging and 52% for Transforming. Almost a quarter of Visioning schools (23%) are neutral, compared with 6% of Transforming schools. Transforming schools also have the highest strong disagreement on this strategy (10%). This suggests that building community-based learning into daily instruction is linked to clear views of climate change, which are mostly positive but occasionally critical.
+
+#### Collaborative Leadership
+Collaborative Leadership shows the sharpest difference between phases. Strong agreement grows from 21% for Visioning to 35% for Engaging and 54% for Transforming, the highest of any strategy. However, Transforming schools also have the highest strong disagreement of any strategy (11%), and only 69% of Visioning schools agree overall. This suggests that shared decision-making may go along with both stronger improvement and more candid, critical views of climate.
+
+#### Shared Commitment, Understanding and Priorities
+Visioning schools on this strategy are the least certain about climate improvement: 30% are neutral and 19% strongly agree. In contrast, 85% of Engaging schools and 84% of Transforming schools agree, and half of Transforming schools (50%) strongly agree. This suggests that building a shared vision and aligned priorities goes along with a clear shift from uncertainty to perceived improvement.
+
+#### Strategic Community Partnerships
+Strategic Community Partnerships has the most Transforming schools (516), and they report the highest total agreement of any strategy's Transforming group (85%). Their strong disagreement (9%) is also the lowest among Transforming groups. Visioning schools remain uncertain, with 30% neutral and 19% strongly agreeing. This suggests that mature, well-aligned partnerships are consistently linked to perceived improvement in school climate.
+
+#### Sustaining Staff and Resources
+This strategy follows the common pattern. Strong agreement rises from 21% for Visioning to 38% for Engaging and 48% for Transforming, and neutral responses drop from 26% to 6%. Total agreement is nearly the same for Engaging (84%) and Transforming (83%) schools. This suggests that most of the climate benefit comes once schools begin putting staffing and resource structures in place, with smaller additional gains after that.
+
+:::
+
+**Instructions:** Pick a strategy below to see how a school's phase of growth on that particular strategy relates to the two school climate measures above.
 
 ::: {.callout-note appearance="minimal"}
 Rows: Visioning / Engaging / Transforming / Null (no response)
