@@ -20,6 +20,58 @@ format:
   font-size: 15px !important;
   color: black !important;
 }
+
+/* Filter row (Cohort/Region/LEA/School + the Total Schools tile): each
+   control only takes the width it needs instead of being stretched into
+   an equal-width grid column, so they sit close together instead of
+   spread across the full page width. Wraps as needed on narrower
+   screens/content columns; the Total Schools tile is pushed to the end
+   of whichever line it lands on (margin-left: auto). */
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  column-gap: 28px;
+  row-gap: 14px;
+  margin-bottom: 1rem;
+}
+.filter-row > .cell {
+  flex: 0 0 auto;
+}
+/* The Total Schools tile (last item) always gets its own line, right-
+   aligned, instead of sharing a line with whichever filter wrapped down
+   next to it -- cleaner than the two fighting over vertical alignment
+   when their heights differ. */
+.filter-row > .cell:last-child {
+  flex: 1 0 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 6px;
+}
+/* Each Inputs.select renders as its own <form>, and Observable's Inputs
+   library gives that form a built-in ~360px default width (sized for
+   standalone notebook use) with the label and select splitting that
+   width evenly -- that, not the grid layout, was the real source of the
+   big gaps. Override it here so each control is only as wide as its
+   label + its options need. The School list has some long "name (LEA)"
+   entries, so its select gets a max-width with ellipsis truncation in
+   the closed state; the full text still shows when the list is open. */
+.filter-row form {
+  width: auto !important;
+  max-width: none !important;
+}
+.filter-row form label {
+  width: auto !important;
+  margin-right: 8px;
+  white-space: nowrap;
+}
+.filter-row form select {
+  width: auto !important;
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 </style>
 <!--
 This page is meant to live in the stac-apr-site repo, next to the other
@@ -54,7 +106,16 @@ a `quarto preview` check on your end.
 -->
 ```
 
-Select a Cohort, Region, and/or LEA below to filter every chart on this page. Hover any bar for details.
+::: hero-banner
+# Is school climate improving as grantees implement the CCSPP?
+
+## Overview of *School Climate* in Year 3 - Quantitative Analysis
+:::
+
+The APR has a few questions that ask whether grantees are collecting data on school climate and whether they see it improving under the community schools strategy. School climate covers how safe, supportive and connected a school feels to students, families and staff. It's a key sign of whether the community schools approach is changing how schools work day to day.
+
+
+**Instructions:** Select a CCSPP Cohort, Region, Local Educational Agency (LEA), and/or School below to filter every chart on this page. Hover over any bar for details.
 
 ```{r}
 #| echo: false
@@ -98,7 +159,7 @@ leaOptions = [...new Set(data.map(d => d.lea))].sort()
 strategyKeys = [...new Set(data.map(d => d.strategy))]
 ```
 
-::: {layout-ncol="4"}
+::: filter-row
 ```{ojs}
 //| echo: false
 viewof cohortFilter = Inputs.select(["All", ...cohortOptions], {label: "CCSPP Cohort:"})
@@ -111,7 +172,23 @@ viewof regionFilter = Inputs.select(["All", ...regionOptions], {label: "Region:"
 
 ```{ojs}
 //| echo: false
-viewof leaFilter = Inputs.select(["All", ...leaOptions], {label: "Local Educational Agency:"})
+viewof leaFilter = Inputs.select(["All", ...leaOptions], {label: "LEA:"})
+```
+
+```{ojs}
+//| echo: false
+// Only offers schools that match the Cohort/Region/LEA filters already
+// picked above, so this list narrows as those are set; changing any of
+// those three resets this dropdown back to "All" (a fresh Inputs.select
+// is created whenever schoolOptions recomputes). Options are keyed by the
+// school's CDS code, not its name -- several schools statewide share the
+// same name (e.g. "Lincoln Elementary" appears in 14 different LEAs), so
+// name alone isn't a safe filter key; the LEA is shown alongside the name
+// to tell same-named schools apart in the list.
+viewof schoolFilter = Inputs.select(["All", ...schoolOptions], {
+  label: "School:",
+  format: d => d === "All" ? "All" : `${d.school_name} (${d.lea})`
+})
 ```
 
 ```{ojs}
@@ -125,10 +202,31 @@ html`<div style="border:1px solid #ddd; border-radius:6px; padding:8px 14px; tex
 
 ```{ojs}
 //| echo: false
+schoolOptions = {
+  const rows = data.filter(d =>
+    (cohortFilter === "All" || d.cohort === cohortFilter) &&
+    (regionFilter === "All" || d.region === regionFilter) &&
+    (leaFilter === "All" || d.lea === leaFilter)
+  );
+  const uniq = new Map();
+  for (const d of rows) {
+    if (!uniq.has(d.cds_code)) {
+      uniq.set(d.cds_code, { cds_code: d.cds_code, school_name: d.school_name, lea: d.lea });
+    }
+  }
+  return Array.from(uniq.values()).sort((a, b) =>
+    a.school_name.localeCompare(b.school_name) || a.lea.localeCompare(b.lea)
+  );
+}
+```
+
+```{ojs}
+//| echo: false
 filteredLong = data.filter(d =>
   (cohortFilter === "All" || d.cohort === cohortFilter) &&
   (regionFilter === "All" || d.region === regionFilter) &&
-  (leaFilter === "All" || d.lea === leaFilter)
+  (leaFilter === "All" || d.lea === leaFilter) &&
+  (schoolFilter === "All" || d.cds_code === schoolFilter.cds_code)
 )
 ```
 
@@ -141,7 +239,7 @@ filteredSchools = filteredLong.filter(d => d.strategy === strategyKeys[0])
 
 ## School Climate Measure
 
-### "Does your school currently collect data and track progress on school climate?"
+### Does your school currently collect data and track progress on school climate?
 
 ```{ojs}
 //| echo: false
@@ -166,13 +264,13 @@ q137Color = ({ Yes: "#346FAB", No: "#AACCE9" })
 ```{ojs}
 //| echo: false
 Plot.plot({
-  marginLeft: 120,
+  marginLeft: 20,
   marginBottom: 50,
   width: width,
   height: 150,
   style: { fontSize: "15px", color: "black" },
   x: { percent: true, label: "% of Respondents", labelAnchor: "center" },
-  y: { label: null },
+  y: { axis: null },
   color: { domain: ["Yes", "No"], range: ["Yes", "No"].map(k => q137Color[k]), legend: true },
   marks: [
     Plot.barX(q137Agg, Plot.stackX({
@@ -189,43 +287,29 @@ Plot.plot({
 })
 ```
 
-### "Our school climate has improved since we started implementing the CCSPP"
+### Our school climate has improved since we started implementing the CCSPP
 
 ```{ojs}
 //| echo: false
-viewof climateFormat = Inputs.radio(
-  ["5-point scale", "Agree / Neutral / Disagree"],
-  { value: "Agree / Neutral / Disagree", label: "View:" }
-)
+q171Order = ["Strongly disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Strongly agree"]
 ```
 
 ```{ojs}
 //| echo: false
-q171Order = climateFormat === "5-point scale"
-  ? ["Strongly disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Strongly agree"]
-  : ["Disagree", "Neutral", "Agree"]
-```
-
-```{ojs}
-//| echo: false
-q171Key = climateFormat === "5-point scale" ? "climate_improved" : "climate_agree3"
+q171Key = "climate_improved"
 ```
 
 ```{ojs}
 //| echo: false
 // Shared blue (-> orange) scale, darkest/bluest = most positive:
 //   75-100% #1F4E79   50-74% #2E75B6   25-49% #9DC3E6   1-24% #F4B183   0% #C55A11
-// 5-point scale uses all 5, in order from most to least agreement.
-// 3-point scale uses just the 3 blues, in the same progressive order.
-q171Color = climateFormat === "5-point scale"
-  ? ({
-      "Strongly disagree": "#C55A11",
-      "Somewhat disagree": "#F4B183",
-      "Neither agree nor disagree": "#9DC3E6",
-      "Somewhat agree": "#2E75B6",
-      "Strongly agree": "#1F4E79"
-    })
-  : ({ "Disagree": "#AACCE9", "Neutral": "#6EA1CE", "Agree": "#346FAB" })
+q171Color = ({
+  "Strongly disagree": "#C55A11",
+  "Somewhat disagree": "#F4B183",
+  "Neither agree nor disagree": "#9DC3E6",
+  "Somewhat agree": "#2E75B6",
+  "Strongly agree": "#1F4E79"
+})
 ```
 
 ```{ojs}
@@ -245,13 +329,13 @@ q171Agg = {
 ```{ojs}
 //| echo: false
 Plot.plot({
-  marginLeft: 120,
+  marginLeft: 20,
   marginBottom: 50,
   width: width,
   height: 150,
   style: { fontSize: "15px", color: "black" },
   x: { percent: true, label: "% of Respondents", labelAnchor: "center" },
-  y: { label: null },
+  y: { axis: null },
   color: { domain: q171Order, range: q171Order.map(k => q171Color[k]), legend: true },
   marks: [
     Plot.barX(q171Agg, Plot.stackX({
@@ -291,7 +375,7 @@ viewof cbsStrategyFilter = Inputs.select(strategyKeys, { label: "CBS Strategy:",
 cbsScopedLong = filteredLong.filter(d => d.strategy === cbsStrategyFilter)
 ```
 
-### "Does your school currently collect data and track progress on school climate?"
+### Does your school currently collect data and track progress on school climate?
 
 ```{ojs}
 //| echo: false
@@ -348,26 +432,32 @@ Plot.plot({
 })
 ```
 
-### "Our school climate has improved since we started implementing the CCSPP"
+### Our school climate has improved since we started implementing the CCSPP
 
 ```{ojs}
 //| echo: false
-cbsResponseOrder = ["Disagree", "Neutral", "Agree"]
+cbsResponseOrder = ["Strongly disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Strongly agree"]
 ```
 
 ```{ojs}
 //| echo: false
-// Same 3-blue scale used for the Agree/Neutral/Disagree chart above, kept as
-// its own copy here so this section doesn't depend on a cell defined earlier
-// in the page.
-cbsClimateColor = ({ Disagree: "#AACCE9", Neutral: "#6EA1CE", Agree: "#346FAB" })
+// Same 5-point scale used for the "Our school climate has improved" chart
+// above, kept as its own copy here so this section doesn't depend on a cell
+// defined earlier in the page.
+cbsClimateColor = ({
+  "Strongly disagree": "#C55A11",
+  "Somewhat disagree": "#F4B183",
+  "Neither agree nor disagree": "#9DC3E6",
+  "Somewhat agree": "#2E75B6",
+  "Strongly agree": "#1F4E79"
+})
 ```
 
 ```{ojs}
 //| echo: false
 cbsClimateAgg = {
-  const rows = cbsScopedLong.filter(d => d.climate_agree3);
-  const groups = d3.rollup(rows, v => v.length, d => d.phase, d => d.climate_agree3);
+  const rows = cbsScopedLong.filter(d => d.climate_improved);
+  const groups = d3.rollup(rows, v => v.length, d => d.phase, d => d.climate_improved);
   const result = [];
   for (const phase of phaseOrder) {
     const respMap = groups.get(phase) ?? new Map();
