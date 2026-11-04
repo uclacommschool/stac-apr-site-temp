@@ -182,11 +182,150 @@ ul.task-list li input[type="checkbox"] {
   }
 }
 </style>
-<section id="california-community-schools-partnership-program-annual-progress-report" class="level1 hero-banner">
-<h1>California Community Schools Partnership Program Annual Progress Report</h1>
-<section id="apr-data-insights" class="level2">
-<h2 class="anchored" data-anchor-id="apr-data-insights">APR Data &amp; Insights</h2>
-</section>
+<style>
+/* ------------------------------------------------------------
+   Home page (APR Data & Insights) -- styles follow the
+   apr-home-page-draft.docx: navy section titles (#104B84),
+   dark gray body text (#343A40), gray subtitle (#5F6973).
+   ------------------------------------------------------------ */
+.home-page { color: #343A40; }
+.home-page h2,
+.home-page h3 {
+  color: #104B84;
+  font-weight: 700;
+}
+.home-page h2 {
+  font-size: 1.35rem;
+  border-bottom: none;
+  margin-top: 2rem;
+}
+.home-page h3 {
+  font-size: 1.1rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+.hero-banner .hero-subtitle {
+  color: #5F6973;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0.25rem 0 0;
+}
+
+/* CCSPP at a Glance tiles */
+.glance {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0.75rem 0 1.5rem;
+}
+.glance-tile {
+  flex: 1 1 130px;
+  border: 1px solid #DCE3EA;
+  border-radius: 8px;
+  padding: 14px 16px;
+  text-align: center;
+}
+.glance-num {
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #104B84;
+}
+.glance-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #104B84;
+  margin-top: 4px;
+}
+.glance-years {
+  flex: 2 1 220px;
+  text-align: left;
+  font-weight: 700;
+  color: #104B84;
+  line-height: 1.7;
+}
+
+/* "What are we learning" sections */
+.learn-section {
+  border-top: 1px solid #E3E8EE;
+  padding-top: 0.25rem;
+}
+.home-stat {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #F3F7FB;
+  border-left: 4px solid #104B84;
+  border-radius: 4px;
+  padding: 10px 16px;
+  margin: 0.5rem 0 1rem;
+}
+.home-stat-num {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #104B84;
+  line-height: 1;
+}
+.explore-link a {
+  color: #104B84;
+  font-weight: 600;
+  text-decoration: underline;
+}
+.explore-link a::after { content: " \2192"; }
+
+/* Horizontal bars (goals; engagement Option B) */
+.bar-list { margin: 0.5rem 0 1rem; }
+.bar-row {
+  display: grid;
+  grid-template-columns: minmax(150px, 15rem) 1fr 3rem;
+  align-items: center;
+  gap: 10px;
+  margin: 6px 0;
+}
+.bar-track {
+  background: #EEF2F6;
+  border-radius: 3px;
+  height: 14px;
+}
+.bar-fill {
+  background: #104B84;
+  height: 100%;
+  border-radius: 3px;
+}
+.bar-pct { font-weight: 700; text-align: right; }
+.chart-card {
+  border: 1px solid #DCE3EA;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 0.75rem 0;
+}
+.chart-card .chart-title { font-weight: 700; color: #104B84; margin: 0; }
+.chart-card .chart-sub { font-size: 0.85rem; margin: 2px 0 8px; }
+.chart-card .chart-note { font-size: 0.78rem; color: #5F6973; margin: 8px 0 0; }
+
+/* TEMPORARY: labels for comparing the two engagement-chart options */
+.option-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #7F4F00;
+  background: #FFF3CD;
+  border-radius: 4px;
+  padding: 2px 8px;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 575.98px) {
+  .bar-row { grid-template-columns: 1fr 3rem; }
+  .bar-row .bar-label { grid-column: 1 / -1; }
+  .home-stat { flex-direction: column; align-items: flex-start; }
+}
+</style>
+<section id="apr-data-insights" class="level1 hero-banner">
+<h1>APR Data &amp; Insights</h1>
+<p><span class="hero-subtitle">California Community Schools Partnership Program | Year 4 (2025–26)</span></p>
 </section>
 
 <div class="no-row-height column-margin column-container"><section id="resources" class="level3">
@@ -229,27 +368,91 @@ Self-Assessments
 <ul>
 <li><a href="https://cadigitalcommons.org/wp-content/uploads/2025/07/Whole-Child-and-Family-Supports-Inventory-updated.pdf" target="_blank">Inventory Form</a></li>
 </ul>
-</section></div><p><strong>The Annual Progress Report (APR) serves as a tool to assess implementation progress and efforts, and to encourage reflection as part of an ongoing continuous improvement process.</strong> The APR was designed to be filled out by each school’s California Community Schools Partnership Program (CCSPP) shared decision-making team or council to ensure the perspectives of students, staff, families and community partners are captured. The reporting portal is intended to align with required annual update presentations on community school planning, including data and outcomes from the prior year at each school site. The APR is aligned with the California Community Schools Framework and also aligns with resources provided by the State Transformational Assistance Center (S-TAC) listed in the side bar.</p>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+</section></div><div class="home-page">
+<section id="about-the-annual-progress-report" class="level2">
+<h2 class="anchored" data-anchor-id="about-the-annual-progress-report">About the Annual Progress Report</h2>
+<p><strong>The Annual Progress Report (APR) serves as a tool to assess implementation progress and efforts under the California Community Schools Partnership Program (CCSPP), and to encourage reflection as part of an ongoing continuous improvement process.</strong> The APR was designed to be filled out by each school’s CCSPP shared decision-making team or council to ensure the perspectives of students, staff, families and community partners are captured. The reporting portal is intended to align with required annual update presentations on community school planning, including data and outcomes from the prior year at each school site. The APR is aligned with the California Community Schools Framework and also aligns with resources provided by the State Transformational Assistance Center (S-TAC) listed in the side bar.</p>
+</section>
+<section id="ccspp-at-a-glance" class="level2">
+<h2 class="anchored" data-anchor-id="ccspp-at-a-glance">CCSPP at a Glance</h2>
+<div class="glance">
+  <div class="glance-tile">
+    <div class="glance-num">2,495</div>
+    <div class="glance-label">School sites</div>
+  </div>
+  <!-- TODO: confirm LEA count. Tile and draft say 597; the LEA Count table at the bottom of this page totals 527 (unique LEAs). -->
+  <div class="glance-tile">
+    <div class="glance-num">597</div>
+    <div class="glance-label">LEAs</div>
+  </div>
+  <div class="glance-tile">
+    <div class="glance-num">4</div>
+    <div class="glance-label">Cohorts</div>
+  </div>
+  <div class="glance-tile glance-years">
+    Year 1 (2022-2023)<br>
+    Year 2 (2023-2024)<br>
+    Year 3 (2024-2025)<br>
+    Year 4 (2025-2026)
+  </div>
 </div>
-<div class="callout-body-container">
-<p>This website reflects the data from the CCSPP APR from <strong>2,495</strong> school sites and <strong>597</strong> Local Educational Agencies (LEA) in <strong>Cohorts 1-4</strong> for <strong>Year 1 (2022-2023), Year 2 (2023- 2024), Year 3 (2024-2025) and Year 4 (2025-2026)</strong> of the initiative<strong>.</strong></p>
+</section>
+<section id="what-are-we-learning-from-the-apr" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-we-learning-from-the-apr">What Are We Learning from the APR?</h2>
+<section id="building-capacity" class="level3 learn-section">
+<h3 class="anchored" data-anchor-id="building-capacity">Building Capacity</h3>
+<p>In Year 4, “Strategic Community Partnerships” continues to be the strategy with the highest percentage of schools and LEAs with a self rating of “Transforming.” Across all of the capacities, findings for Cohorts 1, 2 and 3 show that schools are moving beyond the planning and visioning stage to true and enduring transformation.</p>
+<div class="home-stat">
+  <span class="home-stat-num">80%</span>
+  <span>of Cohort 1 schools report reaching the Engaging or Transforming phase of community-based learning.</span>
 </div>
+<p><span class="explore-link"><a href="./CBS/Schools - Capacity Building Strategies.html">Explore capacity-building data</a></span></p>
+</section>
+<section id="strengthening-engagement" class="level3 learn-section">
+<h3 class="anchored" data-anchor-id="strengthening-engagement">Strengthening Engagement</h3>
+<p>Research tells us that relationships are not peripheral; they are central to sustained implementation, equitable decision-making, and long-term success. In Year 4, 80% of CCSPP schools showed high engagement of administrators (75-100%) and approximately half of schools had high engagement of certificated staff and students. Schools were most successful in engaging socioeconomically disadvantaged students and racially marginalized populations.</p>
+<!-- TEMPORARY: two versions of the engagement chart for comparison.
+     Keep ONE of Option A / Option B, then delete the other and both .option-label spans. -->
+<div class="chart-card">
+  <p class="chart-title">Whose Voices Are Being Engaged?</p>
+  <p class="chart-sub">Percentage of schools reporting high engagement (75-100%) among selected student groups, Year 4</p>
+  <div class="bar-list">
+    <div class="bar-row"><div class="bar-label">Socioeconomically disadvantaged students</div><div class="bar-track"><div class="bar-fill" style="width:54%"></div></div><div class="bar-pct">54%</div></div>
+    <div class="bar-row"><div class="bar-label">Racially marginalized students</div><div class="bar-track"><div class="bar-fill" style="width:44%"></div></div><div class="bar-pct">44%</div></div>
+  </div>
+  <p class="chart-note">Year 4 APR, school-reported engagement. These percentages describe the share of schools reporting high engagement, not the percentage of students participating.</p>
 </div>
+<p><span class="explore-link"><a href="./Engaging Educational Partners.html">Explore engagement data</a></span></p>
+</section>
+<section id="whole-child-family-supports" class="level3 learn-section">
+<h3 class="anchored" data-anchor-id="whole-child-family-supports">Whole Child &amp; Family Supports</h3>
+<p>Nearly 80% of schools provided school climate and collaborative leadership supports. One-third of CCSPP schools are implementing community-based learning as part of their community schools work. Cohort 1 showed a high level of implementation of all whole-child supports with over 60% of schools providing supports across all areas.</p>
+<p><span class="explore-link"><a href="./WCFSI.html">Explore supports data</a></span></p>
+</section>
+<section id="what-goals-are-community-schools-prioritizing" class="level3 learn-section">
+<h3 class="anchored" data-anchor-id="what-goals-are-community-schools-prioritizing">What goals are community schools prioritizing?</h3>
+<p>In Year 4, top school-level goal categories included:</p>
+<div class="bar-list">
+  <div class="bar-row"><div class="bar-label">Family &amp; community engagement</div><div class="bar-track"><div class="bar-fill" style="width:53%"></div></div><div class="bar-pct">53%</div></div>
+  <div class="bar-row"><div class="bar-label">Academic achievement &amp; learning</div><div class="bar-track"><div class="bar-fill" style="width:40%"></div></div><div class="bar-pct">40%</div></div>
+  <div class="bar-row"><div class="bar-label">Attendance</div><div class="bar-track"><div class="bar-fill" style="width:34%"></div></div><div class="bar-pct">34%</div></div>
+  <div class="bar-row"><div class="bar-label">Social-emotional well-being</div><div class="bar-track"><div class="bar-fill" style="width:34%"></div></div><div class="bar-pct">34%</div></div>
 </div>
-<ul>
-<li><p><strong>Through the <u>Capacity-Building Strategies</u>, CCSPP schools are building the core organizational, relational, and leadership foundations required for community schools implementation.</strong> In Year 4, “Strategic Community Partnerships” continued to be the strategy with the highest percentage of schools and LEAs with a self rating of being in the “Transforming” phase. Across all of the capacities, findings for Cohorts 1, 2 and 3 show that schools are moving beyond the planning and visioning stage to true and enduring transformation. Cohort 1 has seen steady growth in Community Based Learning with 80% of the schools now in either the “Engaging” or “Transforming” phase. Learn more about schools’ capacities <a href="https://uclacommschool.github.io/stac-apr-site-temp/CBS/Schools%20-%20Capacity%20Building%20Strategies.html">here</a> and about LEAs’ capacities <a href="https://uclacommschool.github.io/stac-apr-site-temp/CBS/cbs-lea.html">here.</a></p></li>
-<li><p><strong>CCSPP schools are experiencing steady increases in <u>Engagement</u> across groups — especially families and community partners — signaling stronger relational infrastructure.</strong> Research tells us that these relationships are not peripheral; they are central to sustained implementation, equitable decision-making, and long-term success. In Year 4, 80% of CCSPP schools showed high engagement of administrators (75-100%) and about half of the schools had high engagement of&nbsp; certificated staff and students. Schools were most successful in engaging socioeconomically disadvantaged students (54% at 75-100% engagement rate) and racially marginalized populations (44% at 75-100% engagement rate) in developing their community schools. Learn more <a href="https://uclacommschool.github.io/stac-apr-site-temp/Engaging%20Educational%20Partners.html">here</a>.</p></li>
-<li><p><strong>CCSPP schools are implementing a wide variety of <u>Whole Child and Family Supports</u>.</strong> Close to 80% of schools implemented school climate and collaborative leadership supports. A third of the CCSPP schools started implementing community based-learning as part of their community schools work and they are serving on average 300 students a year in this capacity. Cohort 1 showed a high implementation of all whole-child supports with over 60% of schools implementing all support areas. Learn more<a href="https://uclacommschool.github.io/stac-apr-site-temp/WCFSI.html">here</a>.</p></li>
-<li><p><strong>CCSPP schools are focusing on a diverse set of <u>Goals</u> in their community schools work and identifying the measures that matter most to their communities and using them to guide continuous improvement.</strong> In Year 4, the top goal categories schools are focusing on are: Family and Community Engagement (53%), Academic Achievement and Student Learning (40%), Attendance and Absenteeism Reduction (34%) and Social-Emotional Well-being and Mental Health (34%). Half of the grantees indicated that they are using locally developed metrics to track progress in their school specific goals. Learn more <a href="https://uclacommschool.github.io/stac-apr-site-temp/Goals%20and%20Actions.html">here</a>.</p></li>
-<li><p><strong>CCSPP schools focus on <u>School Climate</u> as part of their whole-child approach and many of them also measure progress in this area to determine how safe, supportive and connected a school feels to students, families and staff</strong>. Across all CCSPP schools, collecting school climate data is nearly universal. Most schools also report positive change: 80% agree that their school climate has improved since they began implementing the CCSPP. Learn more <a href="https://uclacommschool.github.io/stac-apr-site-temp/school-climate/school-climate-dashboard.html">here</a>.</p></li>
-<li><p><strong>Most CCSPP districts and consortiums are developing <u>Systems to Support</u> school capacity to access, understand, and use data for continuous program improvement and pursuing policy initiatives that align with and reinforce the shared vision for community schooling.</strong> In Year 4, about 80% of the LEAs reported supporting schools to access and use data, coordinating with COEs and engaging with R-TACs to a large or moderate extent in their systems work. Establishing a system-level problem-solving structure and learning groups focused on community-based pedagogy were only common for about 65% of the LEAs. Learn more <a href="https://uclacommschool.github.io/stac-apr-site-temp/system-level-analysis.html">here</a>.</p></li>
-</ul>
-<p>The APR is aligned with the California Community Schools Framework and also aligns with resources provided by the State Transformational Assistance Center (S-TAC) listed in the side bar.</p>
-<p>The visualizations and tables throughout this site reflect the data from the CCSPP APR for school sites for <strong>Year 1 (2022-2023), Year 2 (2023- 2024), Year 3 (2024-2025), and Year 4 (2025-2026) school years.</strong></p>
+<p>Schools are identifying a range of priorities, beyond academics. Half of CCSPP grantees indicated that they are using locally developed metrics to track progress in their school specific goals.</p>
+<p><span class="explore-link"><a href="./Goals and Actions.html">Explore school goals</a></span></p>
+</section>
+<section id="improving-school-climate" class="level3 learn-section">
+<h3 class="anchored" data-anchor-id="improving-school-climate">Improving School Climate</h3>
+<p>CCSPP schools focus on School Climate as part of their whole-child approach and many of them also measure progress in this area to determine how safe, supportive and connected students, families and staff feel in their school environment. Most schools also report positive change since implementing CCSPP: 80% agree that their school climate has improved since beginning CCSPP implementation.</p>
+<p><span class="explore-link"><a href="./school-climate/school-climate-dashboard.html">Explore school climate data</a></span></p>
+</section>
+<section id="building-systems-of-support" class="level3 learn-section">
+<h3 class="anchored" data-anchor-id="building-systems-of-support">Building Systems of Support</h3>
+<p>In Year 4, approximately 80% of LEAs reported supporting schools to access and use data, coordinating with County Offices of Education (COEs), and engaging with R-TACs to a large or moderate extent to establish a system of support. Establishing a system-level problem-solving structure and learning groups focused on community-based pedagogy were only common for approximately 65% of LEAs.</p>
+<p><span class="explore-link"><a href="./system-level-analysis.html">Explore systems-of-support data</a></span></p>
+</section>
+</section>
+</div>
 <details>
 <summary>
 Site &amp; LEA Counts
