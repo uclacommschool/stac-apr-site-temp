@@ -266,9 +266,9 @@ main.content .hero-banner .hero-subtitle {
   margin-top: 0.25rem;
 }
 
-/* Side column (e.g., "Resources"): keep headings dark gray, not navy */
+/* Side column (e.g., "Resources"): headings in black, not navy */
 main.content .column-margin h2,
 main.content .column-margin h3,
 main.content .column-margin h4 {
-  color: var(--heading-dark);
+  color: #000000;
 }
