@@ -220,3 +220,48 @@ details summary {
 .hero-banner h2 {
   border-bottom: none !important;
 }
+
+/* ------------------------------------------------------------
+   Page headings -- consistent across all pages
+   (modeled on the home page and the Goals & Actions draft)
+   - Title block (blue band): question in dark gray, subtitle in gray
+   - Section headings: navy #104B84, bold, no underline rule
+   ------------------------------------------------------------ */
+:root {
+  --heading-navy: #104B84;
+  --heading-dark: #343a40;
+  --subtitle-gray: #5F6973;
+}
+
+/* Section headings in the page body */
+main.content h2 {
+  color: var(--heading-navy);
+  font-weight: 700;
+  font-size: 1.35rem;
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-top: 2rem;
+}
+main.content h3 {
+  color: var(--heading-navy);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+main.content h4 {
+  color: var(--heading-navy);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Title block: page question + subtitle */
+main.content .hero-banner h1 {
+  color: var(--heading-dark);
+  font-weight: 700;
+}
+main.content .hero-banner h2,
+main.content .hero-banner .hero-subtitle {
+  color: var(--subtitle-gray);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
